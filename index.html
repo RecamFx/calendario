@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="img/logoIconB.png" id="favicon">
+</head>
+<body>
+    <div class="calendar">
+        <div class="month">
+            <button class="prev" onclick="prevMonth()">&#10094;</button>
+            <h2 id="month-year"></h2>
+            <button class="next" onclick="nextMonth()">&#10095;</button>
+        </div>
+        <div class="days">
+            <div class="day">Dom</div>
+            <div class="day">Lun</div>
+            <div class="day">Mar</div>
+            <div class="day">Mié</div>
+            <div class="day">Jue</div>
+            <div class="day">Vie</div>
+            <div class="day">Sáb</div>
+        </div>
+        <div class="dates" id="dates"></div>
+    </div>
+    <div class="botonesAbajo">
+        <button class="admin-btn" onclick="promptPassword()">Administrar Eventos</button>
+        <button id="cambiarColoresBtn" onclick="cambiarColores()">Cambiar Colores</button>
+        <button id="darkmodeBtn" onclick="darkmode()">Tema</button>
+    </div>
+
+    <!-- Modal para crear y editar eventos -->
+    <div class="modal" id="eventModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Agregar Evento</h2>
+            <input type="hidden" id="eventDate">
+            <div class="events2">
+                <input type="text" id="eventName" placeholder="Nombre del evento">
+                <textarea id="eventDescription" placeholder="Descripción del evento"></textarea>
+            </div>
+            <button onclick="saveEvent()">Guardar</button>
+        </div>
+    </div>
+
+    <!-- Context Menu for Day -->
+    <div class="context-menu" id="contextMenu">
+        <div id="dayInfo"></div>
+        <button onclick="addEvent()">Crear Evento</button>
+        <button onclick="editEvent()">Editar Evento</button>
+        <button onclick="removeEvent()">Eliminar Evento</button>
+    </div>
+
+    <!-- Event Details for Non-Admin Users -->
+    <div class="event-details" id="eventDetails"></div>
+
+    <!-- Incluyendo la librería CryptoJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
